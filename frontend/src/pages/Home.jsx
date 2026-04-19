@@ -1,20 +1,54 @@
 import MovieCard from "../components/MovieCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { searchMovies, getPopularMovies } from "../services/api"; 
-import "../css/Home.css"   
+import "../css/Home.css";
+
 
 
 function Home() {
     const [searchQuery, setSearchQuery] = useState("");
     const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
-    
+    useEffect(() => {
+        const loadPopularMovies = async () => {
+            setLoading(true);
+            setError(null);
+            try {
+                const popularMovies = await getPopularMovies();
+                setMovies(popularMovies);
+            } catch (err) {
+                console.error(err);
+                setError("Failed to load movies.");
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    const handleSearch = (e) => {
+        loadPopularMovies();
+    }, []);
+
+    const handleSearch = async (e) => {
         e.preventDefault();
-        alert(searchQuery);
-        setSearchQuery("")
-    }
+        const trimmedQuery = searchQuery.trim();
+        if (!trimmedQuery) return;
+
+        setLoading(true);
+        setError(null);
+
+        try {
+            const results = await searchMovies(trimmedQuery);
+            setMovies(results);
+        } catch (err) {
+            console.error(err);
+            setError("Search failed. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+
+        setSearchQuery("");
+    };
 
     return (
         <div className="home"> 
@@ -28,13 +62,16 @@ function Home() {
             <button type="submit" className="search-button">Search</button>
            </form>
 
+           {loading && <p style={{ textAlign: 'center' }}>Loading movies...</p>}
+           {error && <p style={{ textAlign: 'center', color: '#f44336' }}>{error}</p>}
+           {!loading && !error && movies.length === 0 && (
+               <p style={{ textAlign: 'center' }}>No movies found.</p>
+           )}
+
          <div className="movies-grid">
-            {movies.map( 
-            (movie) => 
-                 (
+            {movies.map((movie) => (
                 <MovieCard movie={movie} key={movie.id} />
-            ))
-        }
+            ))}
          </div>
     </div>
     );
