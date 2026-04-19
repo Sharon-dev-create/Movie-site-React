@@ -33,6 +33,7 @@ function Home() {
         e.preventDefault();
         const trimmedQuery = searchQuery.trim();
         if (!trimmedQuery) return;
+        if(loading) return;
 
         setLoading(true);
         setError(null);
