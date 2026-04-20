@@ -14,7 +14,7 @@ function Favorite() {
                 {favorites.map((movie) => (
                     <MovieCard movie={movie} key={movie.id} />
                 ))}
-                </div>
+                </div> 
                 </div>
         );
         
