@@ -1,53 +1,63 @@
 # Movie Website React
 
-A React + Vite movie exploration app with a simple home page, favorites page, and movie card UI.
+A modern React application for exploring movies, built with Vite. Discover popular movies, search for your favorites, and save them to your personal favorites list.
 
-## Project structure
+## 🚀 Live Demo
 
-- `src/App.jsx` - root app component and router setup
-- `src/components/NavBar.jsx` - top navigation bar for Home and Favorites
-- `src/pages/Home.jsx` - main page with search input and movie grid
-- `src/pages/Favorites.jsx` - placeholder favorites page
-- `src/components/MovieCard.jsx` - presentational movie card with favorite button
-- `src/services/api.js` - TMDB API helper functions for popular movies and search
-- `src/css/` - component/page-specific styles
+Check out the live application: [Movie Website on Vercel](https://moviewebsite-9w3eht0gc-sharon-emmanuels-projects-bd854b70.vercel.app)
 
-## Features
+## ✨ Features
 
-- React application bootstrapped with Vite
-- Client-side routing using `react-router-dom`
-- Movie card UI with title, genre, and poster
-- Favorites page scaffolded for future functionality
-- API service prepared for The Movie Database (TMDB)
+- **Movie Discovery**: Browse popular movies from The Movie Database (TMDB)
+- **Search Functionality**: Find movies by title
+- **Favorites System**: Save and manage your favorite movies
+- **Responsive Design**: Optimized for desktop and mobile devices
+- **Fast Performance**: Built with Vite for lightning-fast development and builds
 
-## Current behavior
+## 🏗️ Project Structure
 
-- The home page shows a search form and a movie grid
-- Submitting the search form currently triggers an alert with the search query
-- The favorites page currently displays a placeholder message
-- The movie card favorite button currently triggers a browser alert
-
-## Installation
-
-From the `frontend/` folder:
-
-```bash
-npm install
+```
+src/
+├── components/
+│   ├── MovieCard.jsx      # Movie card component with favorite toggle
+│   └── NavBar.jsx         # Navigation bar
+├── pages/
+│   ├── Home.jsx           # Main page with search and movie grid
+│   └── Favorites.jsx      # Favorites page
+├── contexts/
+│   └── MovieContext.jsx   # React context for movie state management
+├── services/
+│   └── api.js             # TMDB API integration
+├── css/                   # Component-specific styles
+└── App.jsx                # Root component with routing
 ```
 
-## Development
+## 🛠️ Installation
 
-Start the Vite development server:
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd movie-website-react/frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+## 🚀 Development
+
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Open the URL shown in the terminal to view the app.
+The application will be available at `http://localhost:5173` (or the port shown in your terminal).
 
-## Build
+## 📦 Build
 
-To create a production build:
+Create a production build:
 
 ```bash
 npm run build
@@ -59,16 +69,35 @@ Preview the production build locally:
 npm run preview
 ```
 
-## Available scripts
+## 📜 Available Scripts
 
-- `npm run dev` - start the development server
-- `npm run build` - build the application for production
-- `npm run preview` - preview the production build
-- `npm run lint` - run ESLint
+- `npm run dev` - Start the development server
+- `npm run build` - Build the application for production
+- `npm run preview` - Preview the production build
+- `npm run lint` - Run ESLint for code quality
 
-## Notes
+## 🔧 Technologies Used
 
-- This project uses React `^19.2.4` and Vite `^8.0.4`
-- The TMDB API key is currently stored in `src/services/api.js`
-- Search and popular movie fetching are implemented in `src/services/api.js` but not yet connected to the UI
-- The favorites feature is present as a UI route and will need state persistence to store saved movies
+- **React** 19.2.4 - UI library
+- **Vite** 8.0.4 - Build tool and dev server
+- **React Router** - Client-side routing
+- **TMDB API** - Movie data source
+- **CSS Modules** - Component styling
+
+## 📝 Notes
+
+- TMDB API key is configured in `src/services/api.js`
+- Search and popular movie fetching are fully implemented
+- Favorites feature includes UI and basic state management
+- Consider adding local storage or a backend for persistent favorites
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
